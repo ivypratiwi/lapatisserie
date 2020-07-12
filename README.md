@@ -21,12 +21,12 @@ give users convenience to view all cakes by its types and the best-selling cakes
 # Local Setup 
 Python flask is the package manager of choice here. IDE such as Visual Studio Code is required to run  this project. 
 - Open the lapatisserie folder in the Visual Studio Code.
-- Run the terminal and type python run.py. Ensure that run.py file is in the same directory with the path in the terminal.
+- Run the terminal and type `python run.py`. Ensure that run.py file is in the same directory with the path in the terminal.
 - Copy the link into Google Chrome. 
 - Run the Webapp in Google Chrome. 
 
 
-## Further information
+# Further information
 
 View the [video](https://www.youtube.com/embed/4jLl3x35LkU) of the web app to understand its features.
 
