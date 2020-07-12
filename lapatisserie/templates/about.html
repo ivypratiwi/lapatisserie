@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="row" style="padding: 10 30 10 30">
+    <h1 class="col-12">About La Patisserie</h1>
+    <h5 class="col-md-8" style="text-align: justify;">
+        <br>
+        La Patisserie is a high-end patisserie shop in Brisbane. We gained reputability by winning an award in 2018
+        worldwide cake championship in Rome.
+        <br><br>
+        More customers in Brisbane are coming to the shop frequently to taste the
+        freshest and finest cakes in the shop. As the customer base has grown significantly in the past two years, We
+        decided to start using e-commerce to sell and deliver cakes to customers in
+        addition to selling cakes in the shop. Customers can search their favourite cakes online and make orders
+        directly
+        from the website.
+        <br><br>
+        The delivery is currently only available within the Brisbane area. The delivery fee will be free for purchases
+        above
+        $50.
+        <ul>
+            <li>
+                Place your order by 2pm for the next day delivery
+            </li>
+            <li>
+                Free delivery in Brisbane area for purchases more than $50
+            </li>
+            <li>
+                For further enquiries, email us at lapattiserie@cake.com.au
+            </li>
+        </ul>
+        <br>
+        We are excited to serve you better!
+    </h5>
+
+    <div class="col-md-4">
+        <img class="img-fluid" src="{{url_for('static', filename='img/cake3.jpg')}}" alt="Cake Photo">
+    </div>
+</div>
+
+
+{% endblock %}

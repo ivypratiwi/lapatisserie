@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!--Jumbotron-->
+<div class="jumbotron jumbotron-fluid vertical-center">
+    <div class=" container">
+        <div class="typewriter">
+            <h1><b>Irresistable Sweet Indulgence</b></h1>
+        </div>
+        <h4><b>Your satisfaction is our priority. We strive to create cakes with creativity and good
+                quality</b></h4>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block main %}
+<!--Search Bar-->
+<div class="container index-container" id="search_anchor">
+    <div class="row search-bar">
+        <form class="input-group mb-3  col-md-6 mx-auto" action="{{url_for('main.search', _anchor='search_anchor')}}">
+            <input type="search" class="form-control" placeholder="Search for Cakes" aria-label="Search for Cakes"
+                name="search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </form>
+        <!--Filter by cake type-->
+        <div class="form-group col-md-4 mx-right">
+            <form action="{{url_for('main.filtercake', _anchor='search_anchor')}}">
+                <select class="form-control col-md-9" id="caketype" name="caketype" onchange="this.form.submit()">
+                    <option disabled selected value><i class="fas fa-filter"></i> Filter Cake </option>
+                    <option value="All cakes">All cakes</option>
+                    <option value="Cheese cake">Cheese cake</option>
+                    <option value="Cupcake">Cupcake</option>
+                    <option value="Panna cotta">Panna cotta</option>
+                    <option value="Parfait">Parfait</option>
+                </select>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Best Selling Product-->
+{% if bestselling %}
+<div class="container-fluid product-container">
+    <h2>Best Selling Cakes</h2>
+    <div class="row">
+        {% for cake in bestselling %}
+        <div class="col-sm-4 pl-0 pr-0">
+            <div class="card">
+                <img class="card-img-top" src="{{url_for('static', filename='img/'+cake.image)}}"
+                    alt="Best Selling Cake">
+                <div class="card-body">
+                    <p class="card-title">{{cake.name}}</p>
+                    <p class="card-text">{{ "$%.2f"|format(cake.price) }}</p>
+                    <!--Add to Cart Button-->
+                    <form action="{{ url_for('main.order') }}">
+                        <input type="hidden" id="cake_id" name="cake_id" value="{{ cake.id }}">
+                        <button class="btn btn-block btn-outline-secondary" type="submit"><i
+                                class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    </form>
+                    <a href="{{ url_for('main.detail', cakeid=cake.id) }}" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!--Showing All Cakes-->
+<div class="container-fluid product-container" id="cakes_anchor">
+    <h2>Cakes</h2>
+    <div class="row">
+        {% if not cakes %}
+        <div class="alert alert-light ml-3" role="alert">
+            <h5>There is no cakes which match with your search term. Return to <a
+                    href="{{url_for('main.index', _anchor='search_anchor')}}" class="alert-link">All Cakes</a>.</h5>
+        </div>
+        {% endif %}
+        {% for cake in cakes %}
+        <div class="col-sm-4 pl-0 pr-0">
+            <div class="card">
+                <img class="card-img-top" src="{{url_for('static', filename='img/'+cake.image)}}" alt="Cake Image">
+                <div class="card-body">
+                    <p class="card-title">{{cake.name}}</p>
+                    <p class="card-text">{{ "$%.2f"|format(cake.price) }}</p>
+
+                    <!--Add to Cart Button-->
+                    <form action="{{ url_for('main.order') }}">
+                        <input type="hidden" id="cake_id" name="cake_id" value="{{ cake.id }}">
+                        <button class="btn btn-block btn-outline-secondary" type="submit"><i
+                                class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    </form>
+                    <a href="{{ url_for('main.detail', cakeid=cake.id) }}" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

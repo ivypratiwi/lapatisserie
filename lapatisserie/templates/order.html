@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div>
+    <!--Back To All Cakes Button-->
+    <div class="col-md-12 back-button">
+        <a href="{{url_for('main.index', _anchor='cakes_anchor')}}">
+            < Back to All Cakes </a>
+    </div>
+
+    <!--Showing Order Details-->
+    <section>
+        <div class="card card-order">
+            <h5 class="card-header">Cart Items</h5>
+            {% for cake in order.cakes %}
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/'+cake.image)}}">
+                    </div>
+                    <div class="col-md-8">
+
+                        <!-- Item Description -->
+                        <p class="card-text">{{cake.name}}</p>
+                        <p class="card-text">Quantity: {{quantities[loop.index0]}}</p>
+                        <p class="card-text">Price per cake: {{ "$%.2f"|format(cake.price) }}
+
+                    </div>
+
+                    <!--Remove cake button-->
+                    <div class="col-sm-2 remove-button-div">
+                        <form method="POST" action="{{url_for('main.deleteorderitem')}}">
+                            <input type="hidden" id="cake_id" name="cake_id" value="{{cake.id}}">
+                            <input type="submit" value="Remove" class="btn btn-outline-secondary delete-button">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!--Total Price, Checkout Empty Basket Button-->
+    <section>
+        <div>
+            <h3 style="text-align:center;">Total Price : {{ "$%.2f"|format(totalprice) }}</h3>
+        </div><br>
+        <div style="text-align:center;">
+            <a href="{{ url_for('main.deleteorder') }}" class="btn btn-outline-danger">Empty Basket</a>
+            <a href="{{ url_for('main.checkout') }}" class="btn btn-outline-secondary ml-3"><i
+                    class="fas fa-shopping-basket"></i> Checkout</a>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
