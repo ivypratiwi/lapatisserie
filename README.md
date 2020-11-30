@@ -9,7 +9,7 @@ give users convenience to view all cakes by its types and the best-selling cakes
 6. Making an order. 
 
 
-# Technologies and Libaries Used 
+# Technologies and Libraries Used 
 - Python Flask: Python web framework. 
 - WTForm : Used for the checkout form. 
 - SQLAlchemy: SQL toolkit for Python to facilitate communication between python and database. 
