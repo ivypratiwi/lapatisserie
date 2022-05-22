@@ -28,5 +28,5 @@ Python flask is the package manager of choice here. IDE such as Visual Studio Co
 
 # Further information
 
-View the [video](https://www.youtube.com/watch?v=4jLl3x35LkU) of the web app to understand its features.
+View the [video](https://youtu.be/usqFliHMotI) of the web app to understand its features.
 
